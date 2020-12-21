@@ -91,6 +91,36 @@ Frame Settings:
 
     Camera uses PWM timer #1. If you need PWM (via the ``ledc`` platform) you need to manually specify
     a channel there (with the ``channel: 2``  parameter)
+    
+Camera flash:
+
+The flashlight (bright camera flash LED) can be operated as a simple ON/OFF-only light from a Generic Output Switch switch platform.
+
+.. code-block:: yaml
+
+     # Example configuration entry
+     output:
+       - platform: gpio
+         pin:
+           number: GPIO4
+         id: Light
+     switch:
+       - platform: output
+         name: "Light"
+         output: 'Light'
+
+Configuration variables:
+------------------------
+
+    output (Required, ID): The ID of the output component to use.
+
+    name (Required, string): The name for the switch.
+
+    id (Optional, ID): Manually specify the ID used for code generation.
+
+    All other options from Switch.
+
+
 
 Configuration for Ai-Thinker Camera
 -----------------------------------
